@@ -1,0 +1,2 @@
+LaTeX-to-Unicode-Translator
+3 Objective-C classes that can translate a TeX-formatted string to Unicode NSAttributedString. LaTeXString class is the key one. Initialize a LaTeXString with TeX-formatted string and retrieve translation with [stringName toString] or use factory method [LaTeXString translateString:TeXstring] 
