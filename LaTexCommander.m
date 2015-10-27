@@ -63,7 +63,7 @@
 }
 
 +(NSDictionary *)commandsGreekLettersMM{
-    return @{@"alpha":@"α", @"beta":@"β", @"gamma":@"γ", @"delta":@"δ", @"epsilon":@"ϵ", @"varepsilon":@"ε", @"zeta":@"ζ", @"eta":@"η", @"theta":@"θ", @"vartheta":@"ϑ", @"iota":@"ι", @"kappa":@"κ", @"lambda":@"λ", @"mu":@"μ", @"nu":@"ν", @"xi":@"ξ", @"omicron":@"ο", @"pi":@"π", @"varpi":@"ϖ", @"rho":@"ρ", @"varrho":@"ϱ", @"sigma":@"σ", @"varsigma":@"ς", @"tau":@"τ", @"upsilon":@"υ", @"phi":@"ϕ", @"varphi":@"φ", @"chi":@"χ", @"psi":@"ψ", @"omega":@"ω", @"Gamma":@"Γ", @"Delta":@"Δ", @"Theta":@"Θ", @"Lambda":@"Λ", @"Xi":@"Ξ", @"Pi":@"Π", @"Sigma":@"Σ", @"Upsilon":@"Υ", @"Phi":@"Φ", @"Psi":@"Ψ", @"Omega":@"Ω"
+    return @{@"alpha":@"α", @"beta":@"β", @"gamma":@"γ", @"delta":@"δ", @"epsilon":@"ϵ", @"varepsilon":@"ε", @"zeta":@"ζ", @"eta":@"η", @"theta":@"θ", @"vartheta":@"ϑ", @"iota":@"ι", @"kappa":@"κ", @"lambda":@"λ", @"mu":@"μ", @"nu":@"ν", @"xi":@"ξ", @"pi":@"π", @"varpi":@"ϖ", @"rho":@"ρ", @"varrho":@"ϱ", @"sigma":@"σ", @"varsigma":@"ς", @"tau":@"τ", @"upsilon":@"υ", @"phi":@"ϕ", @"varphi":@"φ", @"chi":@"χ", @"psi":@"ψ", @"omega":@"ω", @"Gamma":@"Γ", @"Delta":@"Δ", @"Theta":@"Θ", @"Lambda":@"Λ", @"Xi":@"Ξ", @"Pi":@"Π", @"Sigma":@"Σ", @"Upsilon":@"Υ", @"Phi":@"Φ", @"Psi":@"Ψ", @"Omega":@"Ω"
              };
 }
 
@@ -101,7 +101,7 @@
     else if ([LaTexCommander executeCharTransform:command withString:in treatingLiterally:comp.treatGapLiterally]) return in;
     
     //unsupported default
-    [in insertAttributedString:[[NSAttributedString alloc]initWithString:command] atIndex:0];
+    //[in insertAttributedString:[[NSAttributedString alloc]initWithString:command] atIndex:0];
     return in;
 }
 
@@ -114,7 +114,7 @@
     if ([LaTexCommander executeMathModeTransforms:command withString:in treatingLiterally:comp.treatGapLiterally]) return in;
     
     //unsupported default
-    [in insertAttributedString:[[NSAttributedString alloc]initWithString:command] atIndex:0];
+    //[in insertAttributedString:[[NSAttributedString alloc]initWithString:command] atIndex:0];
     return in;
 }
 

@@ -21,4 +21,5 @@
 
 +(NSAttributedString*)translateString:(NSString*)str;
 
+
 @end

@@ -24,7 +24,8 @@
         NSArray* stringLines = [self fixNewLinesInString:str];
         //NSLog(@"%@", stringLines);
         NSMutableArray* componenets = [[NSMutableArray alloc]init];
-        for (NSString * line in stringLines){
+        for (NSInteger i=0; i<stringLines.count; i++){
+            NSString * line = [stringLines objectAtIndex:i];
             [componenets addObject:[[LaTeXComponent alloc]initWithString:line]];
         }
         lines = [[NSArray alloc]initWithArray:componenets];
@@ -51,7 +52,7 @@
 
 
 +(NSAttributedString *)translateString:(NSString *)str{
-    LaTeXString* out = [[LaTeXString alloc]init];
+    LaTeXString* out = [[LaTeXString alloc]initWithString:str];
     return [out toString];
 }
 

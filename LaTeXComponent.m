@@ -69,7 +69,6 @@
             }
             i = [self parseComponent:str atIndex:i];
             n=i;
-            if(i>=str.length-1) break;
             continue;
         }
         
@@ -90,7 +89,8 @@
         NSRange rng = [self rangeOfBraces:source fromIndex:i includingBraces:YES];
         if (rng.length) {
             NSRange innerRange = NSMakeRange(rng.location+1, rng.length-2);
-            LaTeXComponent* newcomp = [[LaTeXComponent alloc]initWithString:[source substringWithRange:innerRange] andCommand:nil inheritingFrom:self];
+            NSString* argString = [source substringWithRange:innerRange];
+            LaTeXComponent* newcomp = [[LaTeXComponent alloc]initWithString:argString andCommand:nil inheritingFrom:self];
             [components addObject:newcomp];
             return rng.location+rng.length;
         }else @throw [NSException exceptionWithName:@"Malfored" reason:@"Brace doesn't end" userInfo:@{@"Components":components, @"String":source}];
@@ -202,7 +202,7 @@ here:
     for (; i<str.length; i++) {
         unichar c = [str characterAtIndex:i];
         if ([[NSCharacterSet whitespaceCharacterSet]characterIsMember:c]) continue;
-        else if(i==str.length-1) return NSMakeRange(i, 0);
+        else if(i==str.length-1) return NSMakeRange(i, 1);
         
         if (c=='{') {
             return [self rangeOfBraces:str fromIndex:i includingBraces:YES];
@@ -269,7 +269,8 @@ here:
 
 -(NSMutableAttributedString *)toString{
     NSMutableAttributedString* out = [[NSMutableAttributedString alloc]init];
-    for (id thing in components){
+    for (NSInteger i=0; i<components.count; i++){
+        id thing = [components objectAtIndex:i];
         if ([thing isMemberOfClass:[LaTeXComponent class]]) {
             LaTeXComponent* compThing = (LaTeXComponent*)thing;
             NSAttributedString* stringThing = [compThing toString];
@@ -297,7 +298,8 @@ here:
     if (command) {
         NSLog(@"Command: %@;", command);
     }
-    for (id thing in components){
+    for (NSInteger i=0; i<components.count; i++){
+        id thing =[components objectAtIndex:i];
         if ([thing isMemberOfClass:[LaTeXComponent class]]) {
             [(LaTeXComponent*)thing print];
         }else{
